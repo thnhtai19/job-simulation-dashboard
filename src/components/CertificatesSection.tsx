@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Simulation } from "@/types";
 
 interface CertificatesSectionProps {
@@ -9,10 +10,6 @@ export default function CertificatesSection({
 }: CertificatesSectionProps) {
   const completed = simulations.filter((s) => s.progress === 100);
 
-  if (completed.length === 0) {
-    return null;
-  }
-
   return (
     <section className="rounded-lg border border-gray-200 bg-white/80 shadow-sm p-5 md:p-6">
       <h3 className="text-base md:text-lg font-semibold text-gray-900">
@@ -22,16 +19,23 @@ export default function CertificatesSection({
         Completed simulations you can showcase on your CV or LinkedIn.
       </p>
 
-      <div className="mt-4 space-y-3">
-        {completed.map((sim) => (
+      {completed.length === 0 ? (
+        <div className="mt-6 rounded-lg border border-dashed border-gray-300 bg-gray-50 p-4 text-sm text-gray-500">
+          You haven&apos;t completed any simulations yet. Finish a simulation to earn a certificate.
+        </div>
+      ) : (
+        <div className="mt-4 space-y-3">
+          {completed.map((sim) => (
           <article
             key={sim.id}
             className="rounded-lg border border-gray-200 bg-white px-4 py-3.5 flex flex-col gap-2 shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
           >
             <div className="flex items-start gap-3">
-              <img
+              <Image
                 src={sim.companyLogo}
                 alt={sim.company}
+                width={40}
+                height={40}
                 className="w-10 h-10 rounded-lg border border-gray-100 object-contain bg-white"
               />
               <div>
@@ -66,8 +70,9 @@ export default function CertificatesSection({
               </button>
             </div>
           </article>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

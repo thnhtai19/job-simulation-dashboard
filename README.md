@@ -34,7 +34,7 @@ This runs Jest unit tests (currently for the skill → simulation filtering logi
 ### Deployed demo
 
 - Live demo (Vercel):
-  - ``
+  - `https://job-simulation-dashboard.vercel.app/`
 
 ---
 

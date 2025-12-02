@@ -33,34 +33,40 @@ export default function SkillsChart({ skills }: SkillsChartProps) {
           </p>
         </div>
 
-      <div className="mt-5 flex flex-col gap-3">
-        {skills.map((skill) => {
-          const isSelected = selectedSkill === skill.skill;
-          return (
-            <button
-              key={skill.skill}
-              type="button"
-              onClick={() => toggleSkill(skill.skill)}
-              className={`w-full rounded-lg border px-4 py-3 text-left transition-all cursor-pointer ${
-                isSelected
-                  ? "border-primary-600 bg-primary-50/70 shadow-[0_1px_4px_rgba(0,11,172,0.15)]"
-                  : "border-gray-200 hover:border-primary-200 hover:bg-gray-50"
-              }`}
-            >
-              <div className="flex items-center justify-between text-sm font-medium text-gray-700">
-                <span>{skill.skill}</span>
-                <span className="text-gray-900">{skill.score}</span>
-              </div>
-              <div className="mt-2 h-2 rounded-full bg-gray-100">
-                <div
-                  className="h-full rounded-full bg-primary-600 transition-all"
-                  style={{ width: `${skill.score}%` }}
-                />
-              </div>
-            </button>
-          );
-        })}
-      </div>
+      {skills.length === 0 ? (
+        <div className="mt-6 rounded-lg border border-dashed border-gray-300 bg-gray-50 p-4 text-sm text-gray-500">
+          No skill scores available. Complete simulations to see your skill progress.
+        </div>
+      ) : (
+        <div className="mt-5 flex flex-col gap-3">
+          {skills.map((skill) => {
+            const isSelected = selectedSkill === skill.skill;
+            return (
+              <button
+                key={skill.skill}
+                type="button"
+                onClick={() => toggleSkill(skill.skill)}
+                className={`w-full rounded-lg border px-4 py-3 text-left transition-all cursor-pointer ${
+                  isSelected
+                    ? "border-primary-600 bg-primary-50/70 shadow-[0_1px_4px_rgba(0,11,172,0.15)]"
+                    : "border-gray-200 hover:border-primary-200 hover:bg-gray-50"
+                }`}
+              >
+                <div className="flex items-center justify-between text-sm font-medium text-gray-700">
+                  <span>{skill.skill}</span>
+                  <span className="text-gray-900">{skill.score}</span>
+                </div>
+                <div className="mt-2 h-2 rounded-full bg-gray-100">
+                  <div
+                    className="h-full rounded-full bg-primary-600 transition-all"
+                    style={{ width: `${skill.score}%` }}
+                  />
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      )}
     </section>
   );
 }

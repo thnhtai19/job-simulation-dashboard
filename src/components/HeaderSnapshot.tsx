@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { HeaderSnapshotProps, KpiCardProps } from "@/types/dashboard";
 import { summaryStats } from "@/data/mockData";
 import { Tooltip } from "antd";
@@ -40,9 +41,11 @@ export default function HeaderSnapshot({
     <section className="rounded-lg border border-gray-200 bg-white/80 shadow-sm p-5 md:p-6">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6">
         <div className="flex items-center gap-4">
-          <img
+          <Image
             src={learner.avatar}
             alt={learner.name}
+            width={64}
+            height={64}
             className="w-16 h-16 rounded-full border border-gray-200 shadow-sm object-cover"
           />
 

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { useMemo } from "react";
 import { useSkillFilter } from "@/contexts/SkillFilterContext";
 import { Simulation } from "@/types";
@@ -66,9 +67,11 @@ export default function SimulationList({ simulations }: SimulationListProps) {
               className="p-4 border border-gray-200 rounded-xl hover:border-primary-200 hover:shadow-md transition bg-white"
             >
               <div className="flex items-center gap-3">
-                <img
+                <Image
                   src={sim.companyLogo}
                   alt={sim.company}
+                  width={48}
+                  height={48}
                   className="w-12 h-12 rounded-lg border border-gray-100 object-contain bg-white"
                 />
                 <div>
