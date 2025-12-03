@@ -42,12 +42,12 @@ This runs Jest unit tests (currently for the skill → simulation filtering logi
 
 - **App & layout**
   - `src/app/page.tsx`: main dashboard page (SSR).  
-  - `src/app/layout.tsx`: root layout, fonts + global styles.
+  - `src/app/layout.tsx`: root layout, fonts.
 
 - **Core components**
   - `src/components/HeaderSnapshot.tsx`  
     - Learner avatar, greeting, KPI cards (Started, Completed, Avg score, Streak).  
-    - Shows **Career Activation Rate** with tooltip explaining the industry definition.
+    - Shows **Career Activation Rate** with tooltip explaining the definition.
   - `src/components/SimulationList.tsx`  
     - “Active & completed simulations” list grouped by status (implicitly via badges).  
     - Shows title, company logo/name, role, difficulty, last active date, progress bar, tags.  
@@ -180,9 +180,6 @@ This runs Jest unit tests (currently for the skill → simulation filtering logi
   - Responsive:
     - Mobile: single column.  
     - Desktop: left column (Header, Simulations, Certificates), right column (Skills radar, Recommendations).
-  - Accessibility:
-    - Semantic sections, clear heading hierarchy.  
-    - All charts have text labels and skill chips as textual equivalents.
 
 ---
 
